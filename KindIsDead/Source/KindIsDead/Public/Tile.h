@@ -6,6 +6,13 @@
 #include "GameFramework/Actor.h"
 #include "Tile.generated.h"
 
+UENUM(BlueprintType)
+enum class ETileType: uint8
+{
+	Empty,
+	Ground
+};
+
 UCLASS()
 class KINDISDEAD_API ATile : public AActor
 {
@@ -28,4 +35,7 @@ public:
 
 	//UPROPERTY(EditAnywhere, Category = "Components")
 	//UStaticMeshComponent * CollisionMesh = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
+	ETileType TileType = ETileType::Empty;
 };
