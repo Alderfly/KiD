@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "GlobalDefinitions.h"
 #include "Unit.generated.h"
+
 
 UCLASS()
 class KINDISDEAD_API AUnit : public APawn
@@ -26,6 +28,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setup)
+	ETeam Team = ETeam::None;
 };

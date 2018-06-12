@@ -7,6 +7,7 @@
 #include "GridController.generated.h"
 
 class ATile;
+class AUnit;
 
 UCLASS()
 class KINDISDEAD_API AGridController : public AActor
@@ -20,7 +21,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	void SetUnitArrays();
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -32,4 +34,6 @@ public:
 	int32 sizeY;
 
 	TArray<ATile*> AllTiles;
+	TArray<AUnit*> PlayerUnits;
+	TArray<AUnit*> EnemyUnits;
 };
