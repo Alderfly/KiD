@@ -15,6 +15,10 @@ class KINDISDEAD_API ABuilding : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ABuilding();
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
+
+	UFUNCTION(BlueprintPure, Category = "Health")
+	float GetHealthPercent() const;
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,5 +30,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setup)
 	ETeam Team = ETeam::None;
-	
+
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	int32 StartingHealth = 200;
+
+	UPROPERTY(VisibleAnywhere, Category = "Setup")
+	int32 CurrentHealth;
 };

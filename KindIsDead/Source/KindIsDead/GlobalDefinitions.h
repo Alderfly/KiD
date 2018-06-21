@@ -10,3 +10,10 @@ enum class ETeam : uint8
 	Player,
 	Team1
 };
+
+UENUM()
+enum class EAttackStatus : uint8
+{
+	Reloading,
+	Ready
+};

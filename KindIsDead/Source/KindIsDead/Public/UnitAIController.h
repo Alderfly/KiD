@@ -6,7 +6,8 @@
 #include "AIController.h"
 #include "UnitAIController.generated.h"
 
-class AUnit;
+class AKID_Character;
+
 /**
  * 
  */
@@ -19,7 +20,11 @@ private:
 	// Called when the game starts or when spawned
 	void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
+	virtual void SetPawn(APawn* InPawn) override;
 
-	AUnit * GetControlledUnit() const;
+	UFUNCTION()
+		void OnPossessedCharacterDeath();
+
+	AKID_Character * GetControlledCharacter() const;
 
 };

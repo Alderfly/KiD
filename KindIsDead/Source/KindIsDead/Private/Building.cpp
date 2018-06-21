@@ -15,7 +15,7 @@ ABuilding::ABuilding()
 void ABuilding::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	CurrentHealth = StartingHealth;
 }
 
 // Called every frame
@@ -25,3 +25,22 @@ void ABuilding::Tick(float DeltaTime)
 
 }
 
+float ABuilding::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser)
+{
+	int32 DamagePoints = FPlatformMath::RoundToInt(DamageAmount);
+	int32 DamageToApply = FMath::Clamp(DamagePoints, 0, CurrentHealth);
+
+	CurrentHealth -= DamageToApply;
+	if (CurrentHealth <= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Building Died"))
+			Destroy();
+	}
+
+	return DamageToApply;
+}
+
+float ABuilding::GetHealthPercent() const
+{
+	return (float)CurrentHealth / (float)StartingHealth;
+}

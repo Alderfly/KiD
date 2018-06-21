@@ -8,6 +8,8 @@
 
 class ATile;
 class AUnit;
+class ABuilding;
+class AKID_Character;
 
 UCLASS()
 class KINDISDEAD_API AGridController : public AActor
@@ -21,11 +23,18 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	void SetUnitArrays();
+	void SetAllArrays();
+	void SetPlayerBuildings();
+	void SetTeam1Buildings();
+	void SetPlayerCharacters();
+	void SetTeam1Characters();
 	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
+	UFUNCTION(BlueprintCallable, Category = "SunShine")
+	void GetEnemyBuildings(UPARAM(ref) ETeam MyTeam, TArray<ABuilding*> &EnemyBuildings);
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int32 sizeX;
@@ -34,6 +43,9 @@ public:
 	int32 sizeY;
 
 	TArray<ATile*> AllTiles;
-	TArray<AUnit*> PlayerUnits;
-	TArray<AUnit*> EnemyUnits;
+	TArray<AKID_Character*> PlayerCharacters;
+	TArray<AKID_Character*> Team1Characters;
+	TArray<ABuilding*> PlayerBuildings;
+	TArray<ABuilding*> Team1Buildings;
+
 };
