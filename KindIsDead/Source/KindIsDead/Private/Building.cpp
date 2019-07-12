@@ -34,7 +34,7 @@ float ABuilding::TakeDamage(float DamageAmount, struct FDamageEvent const & Dama
 	if (CurrentHealth <= 0)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Building Died"))
-			Destroy();
+		Destroy();
 	}
 
 	return DamageToApply;
@@ -43,4 +43,9 @@ float ABuilding::TakeDamage(float DamageAmount, struct FDamageEvent const & Dama
 float ABuilding::GetHealthPercent() const
 {
 	return (float)CurrentHealth / (float)StartingHealth;
+}
+
+int32 ABuilding::GetHealth()
+{
+	return CurrentHealth;
 }

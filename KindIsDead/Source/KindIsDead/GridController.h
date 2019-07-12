@@ -33,8 +33,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
-	UFUNCTION(BlueprintCallable, Category = "SunShine")
+	UFUNCTION(BlueprintCallable, Category = "Game Arrays")
 	void GetEnemyBuildings(UPARAM(ref) ETeam MyTeam, TArray<ABuilding*> &EnemyBuildings);
+
+	UFUNCTION(BlueprintCallable, Category = "Game Arrays")
+	void GetAllArrays(TArray<ABuilding*> &PlayerBs, TArray<ABuilding*> &Team1Bs, TArray<AKID_Character*> &PlayerChs, TArray<AKID_Character*> &Team1Chs);
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int32 sizeX;

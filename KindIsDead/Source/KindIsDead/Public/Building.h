@@ -19,6 +19,8 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealthPercent() const;
+	UFUNCTION(BlueprintCallable, Category = "Damage")
+	int32 GetHealth();
 
 protected:
 	// Called when the game starts or when spawned
@@ -31,9 +33,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Setup)
 	ETeam Team = ETeam::None;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	int32 Armor = 10;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	int32 StartingHealth = 1600;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	int32 AttackRadius = 700;
+
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	int32 StartingHealth = 200;
 
 	UPROPERTY(VisibleAnywhere, Category = "Setup")
 	int32 CurrentHealth;

@@ -53,8 +53,22 @@ void AGridController::GetEnemyBuildings(UPARAM(ref) ETeam MyTeam, TArray<ABuildi
 	}
 }
 
+void AGridController::GetAllArrays(TArray<ABuilding*> &PlayerBs, TArray<ABuilding*> &Team1Bs, TArray<AKID_Character*> &PlayerChs, TArray<AKID_Character*> &Team1Chs)
+{
+	SetAllArrays();
+	PlayerBs = PlayerBuildings;
+	Team1Bs = Team1Buildings;
+	PlayerChs = PlayerCharacters;
+	Team1Chs = Team1Characters;
+}
+
 void AGridController::SetAllArrays()
 {
+	PlayerCharacters.Empty();
+	Team1Characters.Empty();
+	PlayerBuildings.Empty();
+	Team1Buildings.Empty();
+
 	for (TActorIterator<AKID_Character> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
 		if (ActorItr->Team == ETeam::Player)

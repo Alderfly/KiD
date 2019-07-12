@@ -48,10 +48,15 @@ public:
 		float ReloadTime = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 		float Attack = 1;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+		int32 Armor = 1;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	int32 StartingHealth = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+		int32 AttackRadius = 100;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+		int32 Speed = 300;
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		int32 StartingHealth = 100;
 	UPROPERTY(VisibleAnywhere, Category = "Setup")
 		int32 CurrentHealth;
 	UFUNCTION(BlueprintCallable, Category = "Damage")
